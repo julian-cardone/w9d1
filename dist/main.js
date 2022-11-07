@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\n\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\nwindow.MovingObject = MovingObject;\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n    const canvasEl = document.getElementById(\"game-canvas\");\n    canvasEl.width = 500;\n    canvasEl.height = 500;\n\n    const ctx = canvasEl.getContext(\"2d\");\n    ctx.fillRect(0, 0, 500, 500);\n});\n\n//# sourceURL=webpack://w9d1/./src/index.js?");
+eval("\n\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\nwindow.MovingObject = MovingObject;\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n    const canvasEl = document.getElementById(\"game-canvas\");\n    canvasEl.width = 500;\n    canvasEl.height = 500;\n\n    const ctx = canvasEl.getContext(\"2d\");\n    ctx.fillRect(0, 0, 500, 500);\n    const mo = new MovingObject({\n        pos: [30, 30],\n        vel: [10, 10],\n        radius: 5,\n        color: \"#00FF00\"\n      });\n    mo.draw(ctx);\n});\n\n//# sourceURL=webpack://w9d1/./src/index.js?");
 
 /***/ }),
 
@@ -23,9 +23,9 @@ eval("\n\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \".
 /*!******************************!*\
   !*** ./src/moving_object.js ***!
   \******************************/
-/***/ (() => {
+/***/ ((module) => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (25:1)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|     ctx.fillStyle = this.color;\\n|     ctx.fill();\\n> };\");\n\n//# sourceURL=webpack://w9d1/./src/moving_object.js?");
+eval("function MovingObject(object){\n    this.pos = object['pos'];\n    this.vel = object.vel;\n    this.radius = object.radius;\n    this.color = object.color;\n};\n\nmodule.exports = MovingObject;\n\nMovingObject.prototype.draw = function (ctx){\n    \n    ctx.beginPath();\n    ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);\n    ctx.fillStyle = this.color;\n    ctx.fill();\n}\n\nMovingObject.prototype.move = function(){\n    return [this.pos[0]+this.vel[0], this.pos[1] + this.vel[1]];\n}\n\n\n\n//# sourceURL=webpack://w9d1/./src/moving_object.js?");
 
 /***/ })
 
